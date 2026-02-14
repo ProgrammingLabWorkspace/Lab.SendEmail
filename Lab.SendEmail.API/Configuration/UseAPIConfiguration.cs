@@ -2,7 +2,7 @@
 {
     public static class UseAPIConfiguration
     {
-        public WebApplication UseAPI(this WebApplication app)
+        public static WebApplication UseAPI(this WebApplication app)
         {
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
