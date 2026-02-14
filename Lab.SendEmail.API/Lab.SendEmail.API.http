@@ -1,0 +1,6 @@
+@Lab.SendEmail.API_HostAddress = http://localhost:5110
+
+GET {{Lab.SendEmail.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
