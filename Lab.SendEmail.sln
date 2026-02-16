@@ -5,6 +5,10 @@ VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.SendEmail.API", "Lab.SendEmail.API\Lab.SendEmail.API.csproj", "{869B83F2-23D0-4FCE-AE93-2BD8E2EB44C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.SendEmail.Infra", "Lab.SendEmail.Infra\Lab.SendEmail.Infra.csproj", "{B82C901D-C9EB-4678-89AB-EDDF167ADFF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.SendEmail.Core", "Lab.SendEmail.Core\Lab.SendEmail.Core.csproj", "{DBA44C2C-5F0C-47B1-BA22-2B748BAB1393}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{869B83F2-23D0-4FCE-AE93-2BD8E2EB44C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{869B83F2-23D0-4FCE-AE93-2BD8E2EB44C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{869B83F2-23D0-4FCE-AE93-2BD8E2EB44C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B82C901D-C9EB-4678-89AB-EDDF167ADFF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B82C901D-C9EB-4678-89AB-EDDF167ADFF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B82C901D-C9EB-4678-89AB-EDDF167ADFF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B82C901D-C9EB-4678-89AB-EDDF167ADFF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBA44C2C-5F0C-47B1-BA22-2B748BAB1393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA44C2C-5F0C-47B1-BA22-2B748BAB1393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA44C2C-5F0C-47B1-BA22-2B748BAB1393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA44C2C-5F0C-47B1-BA22-2B748BAB1393}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
