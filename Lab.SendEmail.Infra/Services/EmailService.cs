@@ -26,23 +26,26 @@ namespace Lab.SendEmail.Infra.Services
     {
         private EmailServiceConfiguration Configuration { get; set; } = configuration;
 
-        public async Task<bool> SendEmail(string to, string subject, string message)
+        public async Task<bool> SendEmail(List<string> to, string subject, string message)
         {
             var smtpHost = Configuration.Host;
             var smtpPort = Configuration.Port;
             var smtpUser = Configuration.User;
             var smtpPassword = Configuration.Password;
 
+            var toEmails = new List<string>(to);
+
             if (Configuration.SandboxMode)
             {
                 if (string.IsNullOrEmpty(Configuration.SandboxTOEmail)) throw new ArgumentNullException("When sandbox mode is true, you must inform SandboxTOEmail.");
 
-                to = Configuration.SandboxTOEmail;
+                toEmails.Clear();
+                toEmails.Add(Configuration.SandboxTOEmail);
             }
 
             var mMessage = new MimeMessage();
-            mMessage.From.Add(new MailboxAddress("Sender Name", smtpUser));
-            mMessage.To.Add(new MailboxAddress("Recipient Name", to));
+            mMessage.From.Add(new MailboxAddress("Lab.SendEmail", smtpUser));
+            mMessage.To.AddRange(toEmails.Select(t => new MailboxAddress("Recipient Name", t)));
             mMessage.Subject = subject;
 
             mMessage.Body = new TextPart("plain")
