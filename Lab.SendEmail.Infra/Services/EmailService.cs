@@ -14,6 +14,12 @@ namespace Lab.SendEmail.Infra.Services
         public string Password { get; set; }
         public bool SandboxMode { get; set; }
         public string SandboxTOEmail { get; set; }
+
+        public void ActiveSandboxMode(string sandboxTOEmail)
+        {
+            SandboxMode = true; 
+            SandboxTOEmail = sandboxTOEmail;
+        }
     }
 
     public class EmailService(EmailServiceConfiguration configuration) : IEmailService
