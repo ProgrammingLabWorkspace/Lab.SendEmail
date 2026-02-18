@@ -31,8 +31,7 @@ namespace Lab.SendEmail.API.Configuration
 
             builder
                 .Services
-                .AddScoped<IEmailService, EmailService>(opts =>
-            {
+                .AddScoped<IEmailService, EmailService>(opts => {
                 return new EmailService(config);
             });
 
