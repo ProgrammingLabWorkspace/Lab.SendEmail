@@ -26,7 +26,7 @@ namespace Lab.SendEmail.API.Configuration
 
             if (Util.IsDesenv())
             {
-                config.ActiveSandboxMode("oliveirachristian1908@gmail.com");
+                config.ActiveSandboxMode();
             }
 
             builder

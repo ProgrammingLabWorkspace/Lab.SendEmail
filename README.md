@@ -27,7 +27,8 @@ A configuração deve ser feita usando `User-Secrets`. Clique com o botão direito 
     "Host": "",
     "User": "",
     "Password": "",
-    "Port":
+    "Port": ,
+    "SandboxTOEmail":  "email_para_testes@desenv.com.br"
   }
 }
 ```
@@ -44,7 +45,8 @@ A seguir será apresentado a configuração para envio de mensagens usando Gmail.
     "Host": "smtp.gmail.com",
     "User": "meuemail@gmail.com",
     "Password": "minha_senha_segura",
-    "Port": 587
+    "Port": 587,
+    "SandboxTOEmail":  "email_para_testes@desenv.com.br"
   }
 }
 ```
@@ -89,12 +91,11 @@ Obs: `EmailServiceConfiguration` pode ser achado dentro `Lab.SendMail.Infra` > `
 ```c#
 if (Util.IsDesenv())
             {
-                config.ActiveSandboxMode("destinatario@desenv.com");
+                config.ActiveSandboxMode();
             }
 ```
 
-**Importante: o método ActiveSandboxMode (método de EmailServiceConfiguration) que ativa o modo SandBox e, com base no parâmetro passado, define o email destinatário de todas
-as mensagens.**
+**Importante: o método ActiveSandboxMode (método de EmailServiceConfiguration) que ativa o modo SandBox.**
 
 `Util.IsDesenv()` descobre qual o ambiente de execução através da variável de ambiente `ASPNETCORE_ENVIRONMENT`. Você pode descobrir o valor
 dessa variável através do caminho: `Lab.SendEmail.API` > `Properties` > `launchSettings.json`.

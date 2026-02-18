@@ -13,12 +13,13 @@ namespace Lab.SendEmail.Infra.Services
         public string User { get; set; }
         public string Password { get; set; }
         public bool SandboxMode { get; private set; }
-        public string SandboxTOEmail { get; private set; }
+        public string SandboxTOEmail { get; set; }
 
-        public void ActiveSandboxMode(string sandboxTOEmail)
+        public void ActiveSandboxMode()
         {
-            SandboxMode = true; 
-            SandboxTOEmail = sandboxTOEmail;
+            if (string.IsNullOrEmpty(SandboxTOEmail)) throw new Exception("É necessário informar um email destinatário para as mensagens para ativar o modo Sandbox.");
+
+            SandboxMode = true;
         }
     }
 
@@ -37,8 +38,6 @@ namespace Lab.SendEmail.Infra.Services
 
             if (Configuration.SandboxMode)
             {
-                if (string.IsNullOrEmpty(Configuration.SandboxTOEmail)) throw new ArgumentNullException("Ao ativar o modo SandBox deve-se informar a propriedade SandboxTOEmail.");
-
                 toEmails.Clear();
                 toEmails.Add(Configuration.SandboxTOEmail);
             }
