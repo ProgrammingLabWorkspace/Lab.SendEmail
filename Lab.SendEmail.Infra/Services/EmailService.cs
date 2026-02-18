@@ -12,8 +12,8 @@ namespace Lab.SendEmail.Infra.Services
         public int Port { get; set; }
         public string User { get; set; }
         public string Password { get; set; }
-        public bool SandboxMode { get; set; }
-        public string SandboxTOEmail { get; set; }
+        public bool SandboxMode { get; private set; }
+        public string SandboxTOEmail { get; private set; }
 
         public void ActiveSandboxMode(string sandboxTOEmail)
         {
@@ -37,7 +37,7 @@ namespace Lab.SendEmail.Infra.Services
 
             if (Configuration.SandboxMode)
             {
-                if (string.IsNullOrEmpty(Configuration.SandboxTOEmail)) throw new ArgumentNullException("When sandbox mode is true, you must inform SandboxTOEmail.");
+                if (string.IsNullOrEmpty(Configuration.SandboxTOEmail)) throw new ArgumentNullException("Ao ativar o modo SandBox deve-se informar a propriedade SandboxTOEmail.");
 
                 toEmails.Clear();
                 toEmails.Add(Configuration.SandboxTOEmail);
@@ -45,7 +45,7 @@ namespace Lab.SendEmail.Infra.Services
 
             var mMessage = new MimeMessage();
             mMessage.From.Add(new MailboxAddress("Lab.SendEmail", smtpUser));
-            mMessage.To.AddRange(toEmails.Select(t => new MailboxAddress("Recipient Name", t)));
+            mMessage.To.AddRange(toEmails.Select(t => new MailboxAddress("Destinatário", t)));
             mMessage.Subject = subject;
 
             mMessage.Body = new TextPart("plain")
