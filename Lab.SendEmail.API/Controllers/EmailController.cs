@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Lab.SendEmail.Core.Contracts;
+using Lab.SendEmail.Core.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lab.SendEmail.API.Controllers
@@ -7,10 +8,18 @@ namespace Lab.SendEmail.API.Controllers
     [ApiController]
     public class EmailController : ControllerBase
     {
-        [HttpPost("SendEmail")]
-        public IActionResult SendEmail() {
-            return Ok();
+        private readonly IEmailService _emailService;
+
+        public EmailController(IEmailService emailService)
+        {
+            _emailService = emailService;
         }
 
+        [HttpPost("SendEmail")]
+        public async Task<IActionResult> SendEmail(EmailDTO email) {
+            await _emailService.SendEmail(email.TOs, email.Subject, email.Message);
+
+            return Ok();
+        }
     }
 }
